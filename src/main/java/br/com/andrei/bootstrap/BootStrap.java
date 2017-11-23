@@ -5,8 +5,10 @@ import org.springframework.stereotype.Component;
 
 import br.com.andrei.domain.Category;
 import br.com.andrei.domain.Customer;
+import br.com.andrei.domain.Vendor;
 import br.com.andrei.repository.CategoryRepository;
 import br.com.andrei.repository.CustomerRepository;
+import br.com.andrei.repository.VendorRepository;
 
 @Component
 public class BootStrap implements CommandLineRunner {
@@ -17,10 +19,15 @@ public class BootStrap implements CommandLineRunner {
 	 */
 	private CategoryRepository categoryRepository;
 	private CustomerRepository customerRepository;
+	private VendorRepository vendorRepository;
 
-	public BootStrap(CategoryRepository categoryRepository, CustomerRepository customerRepository) {
+
+
+	public BootStrap(CategoryRepository categoryRepository, CustomerRepository customerRepository,
+			VendorRepository vendorRepository) {
 		this.categoryRepository = categoryRepository;
 		this.customerRepository = customerRepository;
+		this.vendorRepository = vendorRepository;
 	}
 
 	@Override
@@ -28,6 +35,7 @@ public class BootStrap implements CommandLineRunner {
 	
 		loadCategories();
 		loadCustomers();
+		loadVendors();
 	
 	}
 
@@ -91,6 +99,30 @@ public class BootStrap implements CommandLineRunner {
 		System.out.println("We have "+categoryRepository.count() +" categories");
 	}
 	
+	private void loadVendors() {
+		Vendor vendor1 = new Vendor();
+		vendor1.setName("Samsung");
+		
+		Vendor vendor2 = new Vendor();
+		vendor2.setName("Apple");
+		
+		Vendor vendor3 = new Vendor();
+		vendor3.setName("Motorola");
+		
+		Vendor vendor4 = new Vendor();
+		vendor4.setName("Lenovo");
+		
+		Vendor vendor5 = new Vendor();
+		vendor5.setName("Intel");
+		
+		vendorRepository.save(vendor1);
+		vendorRepository.save(vendor2);
+		vendorRepository.save(vendor3);
+		vendorRepository.save(vendor4);
+		vendorRepository.save(vendor5);
+		
+		System.out.println("We have "+vendorRepository.count() +" vendors");
+	}
 	
 	
 	
