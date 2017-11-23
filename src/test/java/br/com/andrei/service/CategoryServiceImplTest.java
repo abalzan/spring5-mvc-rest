@@ -11,12 +11,14 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import br.com.andrei.api.v1.mapper.CategoryMapper;
 import br.com.andrei.api.v1.model.CategoryDTO;
 import br.com.andrei.domain.Category;
 import br.com.andrei.repository.CategoryRepository;
 
+@SpringBootTest
 public class CategoryServiceImplTest {
 
 	private static final String NAME = "John";

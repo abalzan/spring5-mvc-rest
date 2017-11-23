@@ -1,22 +1,28 @@
 package br.com.andrei.service;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import br.com.andrei.api.v1.mapper.CustomerMapper;
 import br.com.andrei.api.v1.model.CustomerDTO;
 import br.com.andrei.domain.Customer;
 import br.com.andrei.repository.CustomerRepository;
 
+@SpringBootTest
 public class CustomerServiceImplTest {
 
 	private static final String FIRST_NAME = "John";
@@ -25,9 +31,9 @@ public class CustomerServiceImplTest {
 	@Mock
 	CustomerRepository customerRepository;
 
-	CustomerMapper customerMapper = CustomerMapper.INSTANCE;
-
 	CustomerService customerService;
+	
+	CustomerMapper customerMapper = CustomerMapper.INSTANCE;
 
 	@Before
 	    public void setUp() throws Exception {
@@ -45,22 +51,22 @@ public class CustomerServiceImplTest {
 		List<CustomerDTO> categoriesDTO = customerService.getAllCustomers();
 
 		assertEquals(3, categoriesDTO.size());
-	}
-
+	}	
+	
 	@Test
 	public void testGetCustomerById() {
-		CustomerDTO customer = new CustomerDTO();
-		customer.setId(1L);
-		customer.setFirstname(FIRST_NAME);
-		customer.setLastname(LAST_NAME);
-		customer.setCustomerURL("/api/v1/customer/1");
+			
+		Customer savedCustomer = new Customer();
+		savedCustomer.setFirstname(FIRST_NAME);
+		savedCustomer.setLastname(LAST_NAME);
+		savedCustomer.setId(1l);
+		
+		when(customerRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(savedCustomer));
 
-		when(customerService.getCustomerById(Mockito.anyLong())).thenReturn(customer);
+		CustomerDTO returnDTO = customerService.getCustomerById(1L);
 
-		CustomerDTO customerDTO = customerService.getCustomerById(1L);
-
-		assertEquals(FIRST_NAME, customerDTO.getFirstname());
-		assertEquals(LAST_NAME, customerDTO.getLastname());
+		assertEquals(FIRST_NAME, returnDTO.getFirstname());
+		assertEquals(LAST_NAME, returnDTO.getLastname());
 	}
 
 	@Test
@@ -105,5 +111,15 @@ public class CustomerServiceImplTest {
 		assertEquals(customerDTO.getFirstname(), savedDto.getFirstname());
 		assertEquals("/api/v1/customer/1", savedDto.getCustomerURL());
 	}
+	
+    @Test
+    public void deleteCustomerById() throws Exception {
+
+        Long id = 1L;
+
+        customerRepository.deleteById(id);
+
+        verify(customerRepository, times(1)).deleteById(anyLong());
+    }
 
 }

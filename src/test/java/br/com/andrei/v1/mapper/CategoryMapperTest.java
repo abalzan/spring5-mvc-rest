@@ -3,11 +3,13 @@ package br.com.andrei.v1.mapper;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import br.com.andrei.api.v1.mapper.CategoryMapper;
 import br.com.andrei.api.v1.model.CategoryDTO;
 import br.com.andrei.domain.Category;
 
+@SpringBootTest
 public class CategoryMapperTest {
 
 	public static final String NAME = "Joe";
