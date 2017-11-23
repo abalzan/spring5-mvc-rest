@@ -18,7 +18,7 @@ public class CustomerServiceImpl implements CustomerService {
 	private final CustomerMapper customerMapper;
 	private final CustomerRepository customerRepository;
 
-	public CustomerServiceImpl(CustomerRepository customerRepository, CustomerMapper customerMapper) {
+	public CustomerServiceImpl(CustomerMapper customerMapper, CustomerRepository customerRepository) {
 		this.customerMapper = customerMapper;
 		this.customerRepository = customerRepository;
 	}

@@ -33,7 +33,7 @@ public class CustomerServiceImplTest {
 	    public void setUp() throws Exception {
 	        MockitoAnnotations.initMocks(this);
 
-	        customerService = new CustomerServiceImpl(customerRepository, customerMapper);
+	        customerService = new CustomerServiceImpl(customerMapper, customerRepository);
 	}
 
 	@Test
