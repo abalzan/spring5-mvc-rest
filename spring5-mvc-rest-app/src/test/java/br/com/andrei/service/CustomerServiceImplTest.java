@@ -18,8 +18,8 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import br.com.andrei.api.v1.mapper.CustomerMapper;
-import br.com.andrei.api.v1.model.CustomerDTO;
 import br.com.andrei.domain.Customer;
+import br.com.andrei.model.CustomerDTO;
 import br.com.andrei.repository.CustomerRepository;
 
 @SpringBootTest
@@ -87,7 +87,7 @@ public class CustomerServiceImplTest {
 
 		// then
 		assertEquals(customerDTO.getFirstname(), savedDto.getFirstname());
-		assertEquals("/api/v1/customer/1", savedDto.getCustomerURL());
+		assertEquals("/api/v1/customer/1", savedDto.getCustomerUrl());
 	}
 
 	@Test
@@ -109,7 +109,7 @@ public class CustomerServiceImplTest {
 
 		// then
 		assertEquals(customerDTO.getFirstname(), savedDto.getFirstname());
-		assertEquals("/api/v1/customer/1", savedDto.getCustomerURL());
+		assertEquals("/api/v1/customer/1", savedDto.getCustomerUrl());
 	}
 	
     @Test

@@ -8,8 +8,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import br.com.andrei.api.v1.mapper.CustomerMapper;
-import br.com.andrei.api.v1.model.CustomerDTO;
 import br.com.andrei.domain.Customer;
+import br.com.andrei.model.CustomerDTO;
 import br.com.andrei.repository.CustomerRepository;
 
 @Service
@@ -27,7 +27,7 @@ public class CustomerServiceImpl implements CustomerService {
 	public List<CustomerDTO> getAllCustomers() {
 		return customerRepository.findAll().stream().map(customer -> {
 			CustomerDTO customerDTO = customerMapper.customerToCustomerDTO(customer);
-			customerDTO.setCustomerURL(getCustomerURL(customer.getId()));
+			customerDTO.setCustomerUrl(getCustomerURL(customer.getId()));
 			return customerDTO;
 		}).collect(Collectors.toList());
 	}
@@ -49,7 +49,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 		CustomerDTO returnCustomerDTO = customerMapper.customerToCustomerDTO(savedCustomer);
 
-		returnCustomerDTO.setCustomerURL(getCustomerURL(savedCustomer.getId()));
+		returnCustomerDTO.setCustomerUrl(getCustomerURL(savedCustomer.getId()));
 
 		return returnCustomerDTO;
 	}
@@ -75,7 +75,7 @@ public class CustomerServiceImpl implements CustomerService {
 					
 					CustomerDTO returnDTO = customerMapper.customerToCustomerDTO(customerRepository.save(customer));
 					
-					returnDTO.setCustomerURL(getCustomerURL(id));
+					returnDTO.setCustomerUrl(getCustomerURL(id));
 					
 					return returnDTO;
 				}).orElseThrow(ResourceNotFoundException::new);

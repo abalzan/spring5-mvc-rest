@@ -17,9 +17,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import br.com.andrei.api.v1.mapper.CustomerMapper;
-import br.com.andrei.api.v1.model.CustomerDTO;
 import br.com.andrei.bootstrap.BootStrap;
 import br.com.andrei.domain.Customer;
+import br.com.andrei.model.CustomerDTO;
 import br.com.andrei.repository.CategoryRepository;
 import br.com.andrei.repository.CustomerRepository;
 import br.com.andrei.repository.VendorRepository;

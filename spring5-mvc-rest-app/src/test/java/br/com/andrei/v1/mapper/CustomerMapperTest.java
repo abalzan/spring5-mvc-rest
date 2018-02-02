@@ -6,8 +6,8 @@ import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import br.com.andrei.api.v1.mapper.CustomerMapper;
-import br.com.andrei.api.v1.model.CustomerDTO;
 import br.com.andrei.domain.Customer;
+import br.com.andrei.model.CustomerDTO;
 
 @SpringBootTest
 public class CustomerMapperTest {
@@ -38,7 +38,7 @@ public class CustomerMapperTest {
         CustomerDTO customerDTO = new CustomerDTO();
         customerDTO.setFirstname(FIRSTNAME);
         customerDTO.setLastname(LASTNAME);
-        customerDTO.setCustomerURL("URL");
+        customerDTO.setCustomerUrl("URL");
 
         //when
         Customer customer = customerMapper.customerDTOToCustomer(customerDTO);
