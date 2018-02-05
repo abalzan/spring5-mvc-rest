@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import br.com.andrei.api.v1.mapper.CategoryMapper;
-import br.com.andrei.api.v1.model.CategoryDTO;
+import br.com.andrei.model.CategoryDTO;
 import br.com.andrei.domain.Category;
 
 @SpringBootTest

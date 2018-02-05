@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.andrei.api.v1.model.CategoryDTO;
-import br.com.andrei.api.v1.model.CategoryListDTO;
+import br.com.andrei.model.CategoryDTO;
+import br.com.andrei.model.CategoryListDTO;
 import br.com.andrei.service.CategoryService;
 
 @RestController
@@ -26,7 +26,9 @@ public class CategoryController {
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
 	public CategoryListDTO getAllCategories() {
-		return new CategoryListDTO(categoryService.getAllCategories());
+		CategoryListDTO categoryListDTO = new CategoryListDTO();
+		categoryListDTO.getCategories().addAll(categoryService.getAllCategories());
+		return categoryListDTO;
 
 	}
 	

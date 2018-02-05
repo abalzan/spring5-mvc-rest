@@ -20,7 +20,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import br.com.andrei.api.v1.mapper.VendorMapper;
-import br.com.andrei.api.v1.model.VendorDTO;
+import br.com.andrei.model.VendorDTO;
 import br.com.andrei.domain.Vendor;
 import br.com.andrei.repository.VendorRepository;
 
@@ -106,7 +106,7 @@ public class VendorServiceImplTest {
 
         //then
         then(vendorRepository).should().save(any(Vendor.class));
-        assertThat(savedVendorDTO.getVendorURL(), containsString("1"));
+        assertThat(savedVendorDTO.getVendorUrl(), containsString("1"));
 
     }
 
@@ -127,7 +127,7 @@ public class VendorServiceImplTest {
         //then
         // 'should' defaults to times = 1
         then(vendorRepository).should().save(any(Vendor.class));
-        assertThat(savedVendorDTO.getVendorURL(), containsString("1"));
+        assertThat(savedVendorDTO.getVendorUrl(), containsString("1"));
     }
 
     @Test
@@ -149,7 +149,7 @@ public class VendorServiceImplTest {
         // 'should' defaults to times = 1
         then(vendorRepository).should().save(any(Vendor.class));
         then(vendorRepository).should(times(1)).findById(anyLong());
-        assertThat(savedVendorDTO.getVendorURL(), containsString("1"));
+        assertThat(savedVendorDTO.getVendorUrl(), containsString("1"));
     }
 
     @Test

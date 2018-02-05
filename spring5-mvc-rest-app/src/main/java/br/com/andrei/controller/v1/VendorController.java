@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.andrei.api.v1.model.VendorDTO;
-import br.com.andrei.api.v1.model.VendorListDTO;
+import br.com.andrei.model.VendorDTO;
+import br.com.andrei.model.VendorListDTO;
 import br.com.andrei.service.VendorService;
 
 @RestController
@@ -31,7 +31,9 @@ public class VendorController {
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
 	public VendorListDTO getAllVendors() {
-		return new VendorListDTO(vendorService.getAllVendors());
+		VendorListDTO vendorListDTO = new VendorListDTO();
+		vendorListDTO.getVendors().addAll(vendorService.getAllVendors());
+		return vendorListDTO;
 	}
 
 	@GetMapping({"/{id}"})

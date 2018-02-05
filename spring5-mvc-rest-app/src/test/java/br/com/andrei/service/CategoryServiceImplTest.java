@@ -14,7 +14,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import br.com.andrei.api.v1.mapper.CategoryMapper;
-import br.com.andrei.api.v1.model.CategoryDTO;
+import br.com.andrei.model.CategoryDTO;
 import br.com.andrei.domain.Category;
 import br.com.andrei.repository.CategoryRepository;
 

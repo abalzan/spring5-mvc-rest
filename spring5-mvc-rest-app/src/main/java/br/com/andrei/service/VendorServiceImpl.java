@@ -8,7 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import br.com.andrei.api.v1.mapper.VendorMapper;
-import br.com.andrei.api.v1.model.VendorDTO;
+import br.com.andrei.model.VendorDTO;
 import br.com.andrei.domain.Vendor;
 import br.com.andrei.repository.VendorRepository;
 
@@ -27,7 +27,7 @@ public class VendorServiceImpl implements VendorService {
 	public List<VendorDTO> getAllVendors() {
 		return vendorRepository.findAll().stream().map(vendor -> {
 			VendorDTO VendorDTO = vendorMapper.vendorToVendorDTO(vendor);
-			VendorDTO.setVendorURL(getVendorURL(vendor.getId()));
+			VendorDTO.setVendorUrl(getVendorURL(vendor.getId()));
 			return VendorDTO;
 		}).collect(Collectors.toList());
 	}
@@ -49,7 +49,7 @@ public class VendorServiceImpl implements VendorService {
 
 		VendorDTO returnVendorDTO = vendorMapper.vendorToVendorDTO(savedVendor);
 
-		returnVendorDTO.setVendorURL(getVendorURL(savedVendor.getId()));
+		returnVendorDTO.setVendorUrl(getVendorURL(savedVendor.getId()));
 
 		return returnVendorDTO;
 	}
@@ -72,7 +72,7 @@ public class VendorServiceImpl implements VendorService {
 					
 					VendorDTO returnDTO = vendorMapper.vendorToVendorDTO(vendorRepository.save(vendor));
 					
-					returnDTO.setVendorURL(getVendorURL(id));
+					returnDTO.setVendorUrl(getVendorURL(id));
 					
 					return returnDTO;
 				}).orElseThrow(ResourceNotFoundException::new);

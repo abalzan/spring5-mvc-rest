@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import br.com.andrei.api.v1.mapper.VendorMapper;
-import br.com.andrei.api.v1.model.VendorDTO;
+import br.com.andrei.model.VendorDTO;
 import br.com.andrei.domain.Vendor;
 
 public class VendorMapperTest {

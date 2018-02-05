@@ -25,7 +25,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import br.com.andrei.api.v1.model.VendorDTO;
+import br.com.andrei.model.VendorDTO;
 import br.com.andrei.controller.RestResponseEntityExceptionHandler;
 import br.com.andrei.service.VendorService;
 
@@ -51,8 +51,14 @@ public class VendorControllerTest extends AbstractRestControllerTest{
 		mockMvc = MockMvcBuilders.standaloneSetup(vendorController)
 				.setControllerAdvice(new RestResponseEntityExceptionHandler()).build();
 	
-		vendorDTO_1 = new VendorDTO("Vendor 1", VendorController.BASE_URL + "/1");
-        vendorDTO_2 = new VendorDTO("Vendor 2", VendorController.BASE_URL + "/2");
+		vendorDTO_1 = new VendorDTO();
+		vendorDTO_1.setName("Vendor_1");
+		vendorDTO_1.setVendorUrl(VendorController.BASE_URL + "/1");
+		
+		vendorDTO_2 = new VendorDTO();
+		vendorDTO_2.setName("Vendor_2");
+		vendorDTO_2.setVendorUrl(VendorController.BASE_URL + "/2");
+		
     
 	}
 
@@ -83,7 +89,7 @@ public class VendorControllerTest extends AbstractRestControllerTest{
     @Test
     public void createNewVendor() throws Exception {
 
-        given(vendorService.createNewVendor(vendorDTO_1)).willReturn(vendorDTO_1);
+        given(vendorService.createNewVendor(any())).willReturn(vendorDTO_1);
 
         mockMvc.perform(post(VendorController.BASE_URL)
         			.accept(MediaType.APPLICATION_JSON)

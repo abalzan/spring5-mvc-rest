@@ -2,7 +2,7 @@ package br.com.andrei.service;
 
 import java.util.List;
 
-import br.com.andrei.api.v1.model.CategoryDTO;
+import br.com.andrei.model.CategoryDTO;
 
 public interface CategoryService {
 

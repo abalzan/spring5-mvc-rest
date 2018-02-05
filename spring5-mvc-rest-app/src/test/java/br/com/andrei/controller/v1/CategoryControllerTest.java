@@ -22,7 +22,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import br.com.andrei.api.v1.model.CategoryDTO;
+import br.com.andrei.model.CategoryDTO;
 import br.com.andrei.controller.RestResponseEntityExceptionHandler;
 import br.com.andrei.service.CategoryService;
 import br.com.andrei.service.ResourceNotFoundException;
@@ -50,11 +50,11 @@ public class CategoryControllerTest {
 	public void testGetAllCategories() throws Exception {
 
 		CategoryDTO category1 = new CategoryDTO();
-		category1.setId(1L);
+//		category1.setId(1L);
 		category1.setName("Name1");
 		
 		CategoryDTO category2 = new CategoryDTO();
-		category2.setId(2L);
+//		category2.setId(2L);
 		category2.setName("Name2");
 		
 		List<CategoryDTO> categories = Arrays.asList(category1, category2);
@@ -72,7 +72,7 @@ public class CategoryControllerTest {
 	@Test
 	public void testGetCategoryByName() throws Exception {
 		CategoryDTO category = new CategoryDTO();
-		category.setId(1L);
+//		category.setId(1L);
 		category.setName("Name1");
 		
 		when(categoryService.getCategoryByName(Mockito.anyString())).thenReturn(category);
